@@ -2,7 +2,7 @@ package com.bridgelabz.day1;
 
 import java.util.Scanner;
 
-public class forLoop {
+public class ifLoop {
     public static void main(String[] args) {
         int marks;
         Scanner obj = new Scanner(System.in);
