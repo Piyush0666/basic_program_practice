@@ -1,0 +1,148 @@
+mysql> show databases;
++------------------------+
+| Database               |
++------------------------+
+| AddressBook            |
+| Addressbook_Service_DB |
+| information_schema     |
+| mysql                  |
+| payroll_service        |
+| payroll_service2       |
+| performance_schema     |
+| sys                    |
++------------------------+
+8 rows in set (0.00 sec)
+
+mysql> create database AddressBookService;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> create table addressbookservice;
+ERROR 1046 (3D000): No database selected
+mysql> create table addressbookservice(FirstName varchar(60) NOT NULL ,LastName varchar(150),City varchar(30),State varchar(30),zipCode int NOT NULL,PhoneNumber bigint NOT NULL,email varchar(50);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create table addressbookservice(FirstName varchar(60) NOT NULL ,LastName varchar(150),City varchar(30),State varchar(30),ZipCode int NOT NULL,PhoneNumber bigint NOT NULL,Email varchar(50));
+ERROR 1046 (3D000): No database selected
+mysql> use AddressBookService;
+Database changed
+mysql> create table addressbookservice(FirstName varchar(60) NOT NULL ,LastName varchar(150),City varchar(30),State varchar(30),ZipCode int NOT NULL,PhoneNumber bigint NOT NULL,Email varchar(50));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> describe addressbookservice;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| FirstName   | varchar(60)  | NO   |     | NULL    |       |
+| LastName    | varchar(150) | YES  |     | NULL    |       |
+| City        | varchar(30)  | YES  |     | NULL    |       |
+| State       | varchar(30)  | YES  |     | NULL    |       |
+| ZipCode     | int          | NO   |     | NULL    |       |
+| PhoneNumber | bigint       | NO   |     | NULL    |       |
+| Email       | varchar(50)  | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+mysql> show databases;
++------------------------+
+| Database               |
++------------------------+
+| AddressBook            |
+| Addressbook_Service_DB |
+| information_schema     |
+| mysql                  |
+| payroll_service        |
+| payroll_service2       |
+| performance_schema     |
+| sys                    |
++------------------------+
+8 rows in set (0.00 sec)
+
+mysql> create database AddressBookService;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> create table addressbookservice;
+ERROR 1046 (3D000): No database selected
+mysql> create table addressbookservice(FirstName varchar(60) NOT NULL ,LastName varchar(150),City varchar(30),State varchar(30),zipCode int NOT NULL,PhoneNumber bigint NOT NULL,email varchar(50);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create table addressbookservice(FirstName varchar(60) NOT NULL ,LastName varchar(150),City varchar(30),State varchar(30),ZipCode int NOT NULL,PhoneNumber bigint NOT NULL,Email varchar(50));
+ERROR 1046 (3D000): No database selected
+mysql> use AddressBookService;
+Database changed
+mysql> create table addressbookservice(FirstName varchar(60) NOT NULL ,LastName varchar(150),City varchar(30),State varchar(30),ZipCode int NOT NULL,PhoneNumber bigint NOT NULL,Email varchar(50));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> describe addressbookservice;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| FirstName   | varchar(60)  | NO   |     | NULL    |       |
+| LastName    | varchar(150) | YES  |     | NULL    |       |
+| City        | varchar(30)  | YES  |     | NULL    |       |
+| State       | varchar(30)  | YES  |     | NULL    |       |
+| ZipCode     | int          | NO   |     | NULL    |       |
+| PhoneNumber | bigint       | NO   |     | NULL    |       |
+| Email       | varchar(50)  | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+mysql> alter table addressbookservice add Address varchar(150) after type;
+Query OK, 0 rows affected (0.12 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe addressbookservice;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| FirstName   | varchar(60)  | NO   |     | NULL    |       |
+| LastName    | varchar(150) | YES  |     | NULL    |       |
+| type        | varchar(50)  | YES  |     | NULL    |       |
+| Address     | varchar(150) | YES  |     | NULL    |       |
+| City        | varchar(30)  | YES  |     | NULL    |       |
+| State       | varchar(30)  | YES  |     | NULL    |       |
+| ZipCode     | int          | NO   |     | NULL    |       |
+| PhoneNumber | bigint       | NO   |     | NULL    |       |
+| Email       | varchar(50)  | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+9 rows in set (0.00 sec)
+
+mysql> select* from addressbookservice;
++-----------+----------+--------+------------+-----------+---------+---------+-------------+-----------------------+
+| FirstName | LastName | type   | Address    | City      | State   | ZipCode | PhoneNumber | Email                 |
++-----------+----------+--------+------------+-----------+---------+---------+-------------+-----------------------+
+| Piyush    | Verma    | Friend | New Colony | Faridabad | haryana |  121001 |  9910936991 | Piyushvermaa@gmil.com |
++-----------+----------+--------+------------+-----------+---------+---------+-------------+-----------------------+
+1 row in set (0.00 sec)
+mysql> insert into addressbookservice(FirstName,LastName,type,Address,City,State,ZipCode,PhoneNumber,Email)value('Piyush','Verma','Friend','New Colony','Faridabad','haryana',121001,9910936991,'Piyushvermaa@gmil.com');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select* from addressbookservice;
++-----------+----------+--------+------------+-----------+---------+---------+-------------+-----------------------+
+| FirstName | LastName | type   | Address    | City      | State   | ZipCode | PhoneNumber | Email                 |
++-----------+----------+--------+------------+-----------+---------+---------+-------------+-----------------------+
+| Piyush    | Verma    | Friend | New Colony | Faridabad | haryana |  121001 |  9910936991 | Piyushvermaa@gmil.com |
+| Piyush    | Verma    | Friend | New Colony | Faridabad | haryana |  121001 |  9910936991 | Piyushvermaa@gmil.com |
++-----------+----------+--------+------------+-----------+---------+---------+-------------+-----------------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into addressbookservice(FirstName,LastName,type,Address,City,State,ZipCode,PhoneNumber,Email)value('Parwaz','Makandar','Friend','New Colony','Faridabad','haryana',121001,99109087661,'Parvez@gmil.com');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into addressbookservice(FirstName,LastName,type,Address,City,State,ZipCode,PhoneNumber,Email)value('Senthil','Sharma','Friend','New Colony','Delhi','Delhi',121002,98767665601,'senthil@gmil.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select* from addressbookservice;
++-----------+----------+--------+------------+-----------+---------+---------+-------------+-----------------------+
+| FirstName | LastName | type   | Address    | City      | State   | ZipCode | PhoneNumber | Email                 |
++-----------+----------+--------+------------+-----------+---------+---------+-------------+-----------------------+
+| Piyush    | Verma    | Friend | New Colony | Faridabad | haryana |  121001 |  9910936991 | Piyushvermaa@gmil.com |
+| Piyush    | Verma    | Friend | New Colony | Faridabad | haryana |  121001 |  9910936991 | Piyushvermaa@gmil.com |
+| Parwaz    | Makandar | Friend | New Colony | Faridabad | haryana |  121001 | 99109087661 | Parvez@gmil.com       |
+| Senthil   | Sharma   | Friend | New Colony | Delhi     | Delhi   |  121002 | 98767665601 | senthil@gmil.com      |
++-----------+----------+--------+------------+-----------+---------+---------+-------------+-----------------------+
+4 rows in set (0.00 sec)
+
+mysql> select count(FirstName)from addressbookservice where type = 'Friend';
++------------------+
+| count(FirstName) |
++------------------+
+|                4 |
++------------------+
+1 row in set (0.00 sec)
+
