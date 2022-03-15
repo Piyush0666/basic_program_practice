@@ -1,0 +1,349 @@
+mysql> create Practice_table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Practice_table' at line 1
+mysql> create database Practice_table;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show databases;
++------------------------+
+| Database               |
++------------------------+
+| AddressBook            |
+| AddressBookService     |
+| Address_Book_Service   |
+| Addressbook_Service_DB |
+| Practice_table         |
+| information_schema     |
+| mysql                  |
+| payroll_service        |
+| payroll_service2       |
+| performance_schema     |
+| sys                    |
++------------------------+
+11 rows in set (0.00 sec)
+
+mysql> use  Practice_table;
+Database changed
+mysql> create table First_table;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create table First_table(ID int NOT NULL,NAME varchar(50) NOT NULL,DEPART
+MENT varchar(50) NOT NULL,ROLLNO varchar(20)NOT NULL,primary key(ID));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> desc First_table;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| ID         | int         | NO   | PRI | NULL    |       |
+| NAME       | varchar(50) | NO   |     | NULL    |       |
+| DEPARTMENT | varchar(50) | NO   |     | NULL    |       |
+| ROLLNO     | varchar(20) | NO   |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter ID auto_increment;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ID auto_increment' at line 1
+mysql> drop First_table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'First_table' at line 1
+mysql> drop table First_table;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc First_table;
+ERROR 1146 (42S02): Table 'Practice_table.First_table' doesn't exist
+mysql> create table First_table(ID int NOT NULL auto_increment,NAME varchar(50)
+NOT NULL,                                                                       ID));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> desc First_table;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| ID         | int         | NO   | PRI | NULL    | auto_increment |
+| NAME       | varchar(50) | NO   |     | NULL    |                |
+| DEPARTMENT | varchar(50) | NO   |     | NULL    |                |
+| ROLLNO     | varchar(20) | NO   |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+mysql> drop table First_table;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> drop table First_table;
+ERROR 1051 (42S02): Unknown table 'Practice_table.First_table'
+mysql> create table First_table(ID int NOT NULL auto_increment,FIRSTNAME varchar
+(50) NOT NULL,LASTNAME varchar(20) NOT NULL,MOBILENUMBER varchar(15) NOT NULL,CITY varchar(15),STATE,JOINING DATE date NOT NULL,DEPARTMENT varchar(50) NOT NULL,ROLLN
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',JOINING DATE date NOT NULL,DEPARTMENT varchar(50) NOT NULL,ROLLNO varchar(20)NO' at line 1
+mysql> create table First_table(ID int NOT NULL auto_increment,FIRSTNAME varchar(50) NOT NULL,LASTNAME varchar(20) NOT NULL,MOBILENUMBER varchar(15) NOT NULL,CITY varchar(15) NOT NUL,STATE varchar(20) NOT NULL,JOINING_DATE date NOT NULL,DEPARTMENT varchar(50) NOT NULL,ROLLNO varchar(20)NOT NULL,
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NUL,STATE varchar(20) NOT NULL,JOINING_DATE date NOT NULL,DEPARTMENT varchar(50)' at line 1
+mysql> create table First_table(ID int NOT NULL auto_increment,FIRSTNAME varchar(50) NOT NULL,LASTNAME varchar(20) NOT NULL,MOBILENUMBER varchar(15) NOT NULL,CITY varchar(15) NOT NULL,STATE varchar(20) NOT NULL,JOINING_DATE date NOT NULL,DEPARTMENT varchar(50) NOT NULL,ROLLNO varchar(20)NOT NULL,primary key(ID));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> DESC First_table;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| ID           | int         | NO   | PRI | NULL    | auto_increment |
+| FIRSTNAME    | varchar(50) | NO   |     | NULL    |                |
+| LASTNAME     | varchar(20) | NO   |     | NULL    |                |
+| MOBILENUMBER | varchar(15) | NO   |     | NULL    |                |
+| CITY         | varchar(15) | NO   |     | NULL    |                |
+| STATE        | varchar(20) | NO   |     | NULL    |                |
+| JOINING_DATE | date        | NO   |     | NULL    |                |
+| DEPARTMENT   | varchar(50) | NO   |     | NULL    |                |
+| ROLLNO       | varchar(20) | NO   |     | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+9 rows in set (0.01 sec)
+
+mysql> INSERT INTO First_table(ID,FIRSTNAME,LASTNAME,MOBILENUMBER,CITY,STATE,JOINING_DATE,DEPARTMENT,ROLLNO)VALUES
+    -> ('Piyush','Verma','9910936991','Faridabad','Haryana','2020-01-01','MECHANICAL','ME2111018'),
+    -> ('Rakesh','Sharma','9910878658','Palwal','Haryana','2020-02-01','MECHANICAL','ME2111011'),
+    -> ('Rajiv','Bhardwaj','9898786456','Palwal','Haryana','2020-03-01','MECHANICAL','ME2111012'),
+    -> ('Nikhil','Bhatia','9887865645','Agra','UP','2020-03-12','ELECTRONICE','ME2111023'),
+    -> ('Pankaj','verma','9899090987','Agra','UP','2020-04-12','ELECTRONICE','ME2111029');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO First_table(FIRSTNAME,LASTNAME,MOBILENUMBER,CITY,STATE,JOINING_DATE,DEPARTMENT,ROLLNO)VALUES ('Piyush','Verma','9910936991','Faridabad','Haryana','2020-01-01','MECHANICAL','ME2111018'), ('Rakesh','Sharma','9910878658','Palwal','Haryana','2020-02-01','MECHANICAL','ME2111011'), ('Rajiv','Bhardwaj','9898786456','Palwal','Haryana','2020-03-01','MECHANICAL','ME2111012'), ('Nikhil','Bhatia','9887865645','Agra','UP','2020-03-12','ELECTRONICE','ME2111023'), ('Pankaj','verma','9899090987','Agra','UP','2020-04-12','ELECTRONICE','ME2111029');
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from First_table;
++----+-----------+----------+--------------+-----------+---------+--------------+-------------+-----------+
+| ID | FIRSTNAME | LASTNAME | MOBILENUMBER | CITY      | STATE   | JOINING_DATE | DEPARTMENT  | ROLLNO    |
++----+-----------+----------+--------------+-----------+---------+--------------+-------------+-----------+
+|  1 | Piyush    | Verma    | 9910936991   | Faridabad | Haryana | 2020-01-01   | MECHANICAL  | ME2111018 |
+|  2 | Rakesh    | Sharma   | 9910878658   | Palwal    | Haryana | 2020-02-01   | MECHANICAL  | ME2111011 |
+|  3 | Rajiv     | Bhardwaj | 9898786456   | Palwal    | Haryana | 2020-03-01   | MECHANICAL  | ME2111012 |
+|  4 | Nikhil    | Bhatia   | 9887865645   | Agra      | UP      | 2020-03-12   | ELECTRONICE | ME2111023 |
+|  5 | Pankaj    | verma    | 9899090987   | Agra      | UP      | 2020-04-12   | ELECTRONICE | ME2111029 |
++----+-----------+----------+--------------+-----------+---------+--------------+-------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> UPDATE First_table set MOBILENUMBER ="9999999990" WHERE FIRSTNAME='Piyush';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from First_table;
++----+-----------+----------+--------------+-----------+---------+--------------+-------------+-----------+
+| ID | FIRSTNAME | LASTNAME | MOBILENUMBER | CITY      | STATE   | JOINING_DATE | DEPARTMENT  | ROLLNO    |
++----+-----------+----------+--------------+-----------+---------+--------------+-------------+-----------+
+|  1 | Piyush    | Verma    | 9999999990   | Faridabad | Haryana | 2020-01-01   | MECHANICAL  | ME2111018 |
+|  2 | Rakesh    | Sharma   | 9910878658   | Palwal    | Haryana | 2020-02-01   | MECHANICAL  | ME2111011 |
+|  3 | Rajiv     | Bhardwaj | 9898786456   | Palwal    | Haryana | 2020-03-01   | MECHANICAL  | ME2111012 |
+|  4 | Nikhil    | Bhatia   | 9887865645   | Agra      | UP      | 2020-03-12   | ELECTRONICE | ME2111023 |
+|  5 | Pankaj    | verma    | 9899090987   | Agra      | UP      | 2020-04-12   | ELECTRONICE | ME2111029 |
++----+-----------+----------+--------------+-----------+---------+--------------+-------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * from First_name where city ='Palwal';
+ERROR 1146 (42S02): Table 'Practice_table.First_name' doesn't exist
+mysql> SELECT * from First_table where city ='Palwal';
++----+-----------+----------+--------------+--------+---------+--------------+------------+-----------+
+| ID | FIRSTNAME | LASTNAME | MOBILENUMBER | CITY   | STATE   | JOINING_DATE | DEPARTMENT | ROLLNO    |
++----+-----------+----------+--------------+--------+---------+--------------+------------+-----------+
+|  2 | Rakesh    | Sharma   | 9910878658   | Palwal | Haryana | 2020-02-01   | MECHANICAL | ME2111011 |
+|  3 | Rajiv     | Bhardwaj | 9898786456   | Palwal | Haryana | 2020-03-01   | MECHANICAL | ME2111012 |
++----+-----------+----------+--------------+--------+---------+--------------+------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT CITY,COUNT(CITY) as count from First_table group by CITY;
++-----------+-------+
+| CITY      | count |
++-----------+-------+
+| Faridabad |     1 |
+| Palwal    |     2 |
+| Agra      |     2 |
++-----------+-------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT STATE,COUNT(STATE) as count from First_table group by STATE ;
++---------+-------+
+| STATE   | count |
++---------+-------+
+| Haryana |     3 |
+| UP      |     2 |
++---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table First_table add TYPE varchar(15) after STATE;
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc First_table;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| ID           | int         | NO   | PRI | NULL    | auto_increment |
+| FIRSTNAME    | varchar(50) | NO   |     | NULL    |                |
+| LASTNAME     | varchar(20) | NO   |     | NULL    |                |
+| MOBILENUMBER | varchar(15) | NO   |     | NULL    |                |
+| CITY         | varchar(15) | NO   |     | NULL    |                |
+| STATE        | varchar(20) | NO   |     | NULL    |                |
+| TYPE         | varchar(15) | YES  |     | NULL    |                |
+| JOINING_DATE | date        | NO   |     | NULL    |                |
+| DEPARTMENT   | varchar(50) | NO   |     | NULL    |                |
+| ROLLNO       | varchar(20) | NO   |     | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> update First_table set TYPE = 'FRIEND' where FIRSTNAME ='Rajiv';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from First_table;
++----+-----------+----------+--------------+-----------+---------+--------+--------------+-------------+-----------+
+| ID | FIRSTNAME | LASTNAME | MOBILENUMBER | CITY      | STATE   | TYPE   | JOINING_DATE | DEPARTMENT  | ROLLNO    |
++----+-----------+----------+--------------+-----------+---------+--------+--------------+-------------+-----------+
+|  1 | Piyush    | Verma    | 9999999990   | Faridabad | Haryana | NULL   | 2020-01-01   | MECHANICAL  | ME2111018 |
+|  2 | Rakesh    | Sharma   | 9910878658   | Palwal    | Haryana | NULL   | 2020-02-01   | MECHANICAL  | ME2111011 |
+|  3 | Rajiv     | Bhardwaj | 9898786456   | Palwal    | Haryana | FRIEND | 2020-03-01   | MECHANICAL  | ME2111012 |
+|  4 | Nikhil    | Bhatia   | 9887865645   | Agra      | UP      | NULL   | 2020-03-12   | ELECTRONICE | ME2111023 |
+|  5 | Pankaj    | verma    | 9899090987   | Agra      | UP      | NULL   | 2020-04-12   | ELECTRONICE | ME2111029 |
++----+-----------+----------+--------------+-----------+---------+--------+--------------+-------------+-----------+
+5 rows in set (0.01 sec)
+
+mysql> update First_table set TYPE = 'FAMILY' where FIRSTNAME ='Piyush';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update First_table set TYPE = 'FRIEND' where FIRSTNAME ='Rajesh';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> update First_table set TYPE = 'FAMILY' where FIRSTNAME ='Nikhil';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update First_table set TYPE = 'FRIEND' where FIRSTNAME ='Pankaj';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from First_table;
++----+-----------+----------+--------------+-----------+---------+--------+--------------+-------------+-----------+
+| ID | FIRSTNAME | LASTNAME | MOBILENUMBER | CITY      | STATE   | TYPE   | JOINING_DATE | DEPARTMENT  | ROLLNO    |
++----+-----------+----------+--------------+-----------+---------+--------+--------------+-------------+-----------+
+|  1 | Piyush    | Verma    | 9999999990   | Faridabad | Haryana | FAMILY | 2020-01-01   | MECHANICAL  | ME2111018 |
+|  2 | Rakesh    | Sharma   | 9910878658   | Palwal    | Haryana | NULL   | 2020-02-01   | MECHANICAL  | ME2111011 |
+|  3 | Rajiv     | Bhardwaj | 9898786456   | Palwal    | Haryana | FRIEND | 2020-03-01   | MECHANICAL  | ME2111012 |
+|  4 | Nikhil    | Bhatia   | 9887865645   | Agra      | UP      | FAMILY | 2020-03-12   | ELECTRONICE | ME2111023 |
+|  5 | Pankaj    | verma    | 9899090987   | Agra      | UP      | FRIEND | 2020-04-12   | ELECTRONICE | ME2111029 |
++----+-----------+----------+--------------+-----------+---------+--------+--------------+-------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> update First_table set TYPE = 'FRIEND' where FIRSTNAME ='Rajesh';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select * from First_table;
++----+-----------+----------+--------------+-----------+---------+--------+--------------+-------------+-----------+
+| ID | FIRSTNAME | LASTNAME | MOBILENUMBER | CITY      | STATE   | TYPE   | JOINING_DATE | DEPARTMENT  | ROLLNO    |
++----+-----------+----------+--------------+-----------+---------+--------+--------------+-------------+-----------+
+|  1 | Piyush    | Verma    | 9999999990   | Faridabad | Haryana | FAMILY | 2020-01-01   | MECHANICAL  | ME2111018 |
+|  2 | Rakesh    | Sharma   | 9910878658   | Palwal    | Haryana | NULL   | 2020-02-01   | MECHANICAL  | ME2111011 |
+|  3 | Rajiv     | Bhardwaj | 9898786456   | Palwal    | Haryana | FRIEND | 2020-03-01   | MECHANICAL  | ME2111012 |
+|  4 | Nikhil    | Bhatia   | 9887865645   | Agra      | UP      | FAMILY | 2020-03-12   | ELECTRONICE | ME2111023 |
+|  5 | Pankaj    | verma    | 9899090987   | Agra      | UP      | FRIEND | 2020-04-12   | ELECTRONICE | ME2111029 |
++----+-----------+----------+--------------+-----------+---------+--------+--------------+-------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select TYPE Count (TYPE) from First_table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(TYPE) from First_table' at line 1
+mysql> select TYPE,Count (TYPE) from First_table;
+ERROR 1630 (42000): FUNCTION Practice_table.Count does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+mysql> select TYPE,Count (TYPE) from First_table group by TYPE;
+ERROR 1630 (42000): FUNCTION Practice_table.Count does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+mysql> select TYPE,Count(TYPE) from First_table group by TYPE;
++--------+-------------+
+| TYPE   | Count(TYPE) |
++--------+-------------+
+| FAMILY |           2 |
+| NULL   |           0 |
+| FRIEND |           2 |
++--------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> CREATE TABLE contacts
+    -> (ID int NOT NULL auto_increment,FIRSTNAME varchar(30) NOT NULL,LASTNAME varchar(20),E-MAIL varchar(20) NOT NULL,PRIMARY KEY(ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax mysql>
+mysql> CREATE TABLE contacts (ID int NOT NULL auto_increment,FIRSTNAME varchar(30) NOT NULL,LASTNAME varchar(20),eMAIL varchar(20) NOT NULL,PRIMARY KEY(ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> CREATE TABLE contacts (ID int NOT NULL auto_increment,FIRSTNAME varchar(30) NOT NULL,LASTNAME varchar(20),eMAIL varchar(20) NOT NULL,PRIMARY KEY(ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> CREATE TABLE contacts (ID int NOT NULL auto_increment,FIRSTNAME varchar(30) NOT NULL,LASTNAME varchar(20),eMAIL varchar(20) NOT NULL,PRIMARY KEY(ID));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> desc contacts;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| ID        | int         | NO   | PRI | NULL    | auto_increment |
+| FIRSTNAME | varchar(30) | NO   |     | NULL    |                |
+| LASTNAME  | varchar(20) | YES  |     | NULL    |                |
+| eMAIL     | varchar(20) | NO   |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> CREATE TABLE address;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> CREATE TABLE address(ZIP varchar(10) NOT NULL,CITY varchar(20),STATE varchar(20) NOT NULL,primary key(ZIP);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> CREATE TABLE address(ZIP varchar(10) NOT NULL,CITY varchar(20),STATE varchar(20) NOT NULL,primary key(ZIP));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> desc address;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| ZIP   | varchar(10) | NO   | PRI | NULL    |       |
+| CITY  | varchar(20) | YES  |     | NULL    |       |
+| STATE | varchar(20) | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> drop address;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'address' at line 1
+mysql> drop table address;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> CREATE TABLE address(ZIP varchar(10) NOT NULL,CITY varchar(20) NOT NULL,STATE varchar(20) NOT NULL,primary key(ZIP));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> desc address;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| ZIP   | varchar(10) | NO   | PRI | NULL    |       |
+| CITY  | varchar(20) | NO   |     | NULL    |       |
+| STATE | varchar(20) | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> CREATE TABLE contact_address(ID int NOT NULL,ZIP varchar(20) NOT NULL,forign key(ID) reference contacts(ZIP), forign key(ZIP) referenceaddress(ZIP));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(ID) reference contacts(ZIP), forign key(ZIP) referenceaddress(ZIP))' at line 1
+mysql> CREATE TABLE contact_address(ID int NOT NULL,ZIP varchar(20) NOT NULL,forign key(ID) reference contacts(ZIP), forign key(ZIP) reference address(ZIP));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key(ID) reference contacts(ZIP), forign key(ZIP) reference address(ZIP))' at line 1
+mysql> CREATE TABLE contact_address(ID int NOT NULL,ZIP varchar(20) NOT NULL,forign key (ID) reference contacts(ZIP), forign key(ZIP) reference address(ZIP));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key (ID) reference contacts(ZIP), forign key(ZIP) reference address(ZIP))' at line 1
+mysql> CREATE TABLE contact_address(ID int NOT NULL,ZIP varchar(20) NOT NULL,foreign key (ID) reference contacts(ZIP), foreign key (ZIP) reference address(ZIP));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'reference contacts(ZIP), foreign key (ZIP) reference address(ZIP))' at line 1
+mysql> CREATE TABLE contact_address(ID int NOT NULL,ZIP varchar(20) NOT NULL,foreign key (ID) references contacts(ZIP), foreign key (ZIP) references address(ZIP));
+ERROR 3734 (HY000): Failed to add the foreign key constraint. Missing column 'ZIP' for constraint 'contact_address_ibfk_1' in the referenced table 'contacts'
+mysql> CREATE TABLE contact_address(ID int NOT NULL,ZIP varchar(20) NOT NULL,foreign key (ID) references contacts(ID), foreign key (ZIP) references address(ZIP));
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> desc contact_address;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| ID    | int         | NO   | MUL | NULL    |       |
+| ZIP   | varchar(20) | NO   | MUL | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> create table relations(TYPE varchar(20),primary key (TYPE));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> DESC relations;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| TYPE  | varchar(20) | NO   | PRI | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+1 row in set (0.00 sec)
