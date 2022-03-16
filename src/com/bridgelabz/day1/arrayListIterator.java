@@ -15,7 +15,7 @@ public class arrayListIterator {
         Collections.sort(arr);
         System.out.println(arr);
         //traversing thorough iterator
-        Iterator ill = arr.iterator();//getting the iterator
+        Iterator<String> ill = arr.iterator();//getting the iterator
         while(ill.hasNext()){//check if iterator has the elements
             System.out.println(ill.next());//printing the element and move to next
         }

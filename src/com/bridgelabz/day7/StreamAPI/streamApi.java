@@ -49,9 +49,10 @@ public class streamApi {
         System.out.println(arraylist .stream().mapToInt(i->i).max());
         System.out.println(arraylist .stream().mapToInt(i->i).average());
         System.out.println(arraylist .stream().mapToInt(i->i).sum());
-        arraylist .stream().mapToInt(i->i).sorted().forEach(System.out ::println);
+        arraylist .stream().mapToInt(i->i).sorted().forEach(System.out ::println);//here we can create pipeline
+                                                                                  // for the stream
 
-
+//OptionalInt min =list.stream().min(i->i).ifPresent(min-> System.out.println(min));
     }
 }
 
